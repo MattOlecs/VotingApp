@@ -1,0 +1,12 @@
+E:\Projekty\C#\VotingApp\VotingApp.Infrastructure\bin\Debug\net7.0\VotingApp.Infrastructure.deps.json
+E:\Projekty\C#\VotingApp\VotingApp.Infrastructure\bin\Debug\net7.0\VotingApp.Infrastructure.dll
+E:\Projekty\C#\VotingApp\VotingApp.Infrastructure\bin\Debug\net7.0\VotingApp.Infrastructure.pdb
+E:\Projekty\C#\VotingApp\VotingApp.Infrastructure\obj\Debug\net7.0\VotingApp.Infrastructure.csproj.AssemblyReference.cache
+E:\Projekty\C#\VotingApp\VotingApp.Infrastructure\obj\Debug\net7.0\VotingApp.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+E:\Projekty\C#\VotingApp\VotingApp.Infrastructure\obj\Debug\net7.0\VotingApp.Infrastructure.AssemblyInfoInputs.cache
+E:\Projekty\C#\VotingApp\VotingApp.Infrastructure\obj\Debug\net7.0\VotingApp.Infrastructure.AssemblyInfo.cs
+E:\Projekty\C#\VotingApp\VotingApp.Infrastructure\obj\Debug\net7.0\VotingApp.Infrastructure.csproj.CoreCompileInputs.cache
+E:\Projekty\C#\VotingApp\VotingApp.Infrastructure\obj\Debug\net7.0\VotingApp.Infrastructure.dll
+E:\Projekty\C#\VotingApp\VotingApp.Infrastructure\obj\Debug\net7.0\refint\VotingApp.Infrastructure.dll
+E:\Projekty\C#\VotingApp\VotingApp.Infrastructure\obj\Debug\net7.0\VotingApp.Infrastructure.pdb
+E:\Projekty\C#\VotingApp\VotingApp.Infrastructure\obj\Debug\net7.0\ref\VotingApp.Infrastructure.dll
