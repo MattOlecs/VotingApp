@@ -1,4 +1,11 @@
-﻿using VotingApp.Infrastructure;
+﻿using VotingApp.Classes;
+using VotingApp.CQRS.Commands.AddCandidateCommand;
+using VotingApp.CQRS.Commands.AddVoteCommand;
+using VotingApp.CQRS.Commands.AddVoterCommand;
+using VotingApp.CQRS.Commands.VoteCommand;
+using VotingApp.CQRS.Queries.GetVotingInfoQuery;
+using VotingApp.Infrastructure;
+using VotingApp.Infrastructure.CQRS.Interfaces;
 using VotingApp.Services;
 using VotingApp.Services.Interfaces;
 
@@ -12,7 +19,24 @@ internal static class ServicesExtensions
             .AddSingleton<IVotesService, VotesService>();
 
         services.RegisterCQRS();
+        services.RegisterCommandHandlers();
+        services.RegisterQueryHandlers();
 
         return services;
+    }
+
+    private static IServiceCollection RegisterCommandHandlers(this IServiceCollection services)
+    {
+        return services
+            .AddTransient<ICommandHandler<AddVotingCommand, Guid>, AddVotingCommandHandler>()
+            .AddTransient<ICommandHandler<AddVoterCommand, Guid>, AddVoterCommandHandler>()
+            .AddTransient<ICommandHandler<AddCandidateCommand, Guid>, AddCandidateCommandHandler>()
+            .AddTransient<ICommandHandler<VoteCommand>, VoteCommandHandler>();
+    }
+    
+    private static IServiceCollection RegisterQueryHandlers(this IServiceCollection services)
+    {
+        return services
+            .AddTransient<IQueryHandler<GetVotingInfoQuery, VotingBaseInfo>, GetVotingInfoQueryHandler>();
     }
 }

@@ -9,7 +9,7 @@ public static class Extensions
     public static IServiceCollection RegisterCQRS(this IServiceCollection services)
     {
         return services
-            .AddSingleton<ICommandDispatcher, CommandDispatcher>()
-            .AddSingleton<IQueryDispatcher, QueryDispatcher>();
+            .AddTransient<ICommandDispatcher, CommandDispatcher>()
+            .AddTransient<IQueryDispatcher, QueryDispatcher>();
     }
 }

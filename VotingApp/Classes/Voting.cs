@@ -31,6 +31,9 @@ public class Voting
         voter.MarkAsVoted();
     }
 
+    public Dictionary<Guid, Voter> GetVoters() => _votersMap;
+    public Dictionary<Guid, Candidate> GetCandidates() => _candidatesMap;
+
     private Voter GetVoter(Guid voterId)
     {
         _votersMap.TryGetValue(voterId, out Voter? voter);

@@ -16,8 +16,4 @@
       <ProjectReference Include="..\VotingApp.Infrastructure\VotingApp.Infrastructure.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="CQRS\Queries\" />
-    </ItemGroup>
-
 </Project>
