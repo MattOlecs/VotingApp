@@ -4,14 +4,14 @@
     "E:\\Projekty\\C#\\VotingApp\\VotingApp\\VotingApp.csproj": {}
   },
   "projects": {
-    "E:\\Projekty\\C#\\VotingApp\\VotingApp\\VotingApp.csproj": {
+    "E:\\Projekty\\C#\\VotingApp\\VotingApp.Infrastructure\\VotingApp.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Projekty\\C#\\VotingApp\\VotingApp\\VotingApp.csproj",
-        "projectName": "VotingApp",
-        "projectPath": "E:\\Projekty\\C#\\VotingApp\\VotingApp\\VotingApp.csproj",
+        "projectUniqueName": "E:\\Projekty\\C#\\VotingApp\\VotingApp.Infrastructure\\VotingApp.Infrastructure.csproj",
+        "projectName": "VotingApp.Infrastructure",
+        "projectPath": "E:\\Projekty\\C#\\VotingApp\\VotingApp.Infrastructure\\VotingApp.Infrastructure.csproj",
         "packagesPath": "C:\\Users\\Mateusz\\.nuget\\packages\\",
-        "outputPath": "E:\\Projekty\\C#\\VotingApp\\VotingApp\\obj\\",
+        "outputPath": "E:\\Projekty\\C#\\VotingApp\\VotingApp.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "E:\\Programy\\Visual Studio\\Shared\\NuGetPackages"
@@ -44,9 +44,82 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "dependencies": {
+            "Microsoft.Extensions.DependencyInjection": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "E:\\Projekty\\C#\\VotingApp\\VotingApp\\VotingApp.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\Projekty\\C#\\VotingApp\\VotingApp\\VotingApp.csproj",
+        "projectName": "VotingApp",
+        "projectPath": "E:\\Projekty\\C#\\VotingApp\\VotingApp\\VotingApp.csproj",
+        "packagesPath": "C:\\Users\\Mateusz\\.nuget\\packages\\",
+        "outputPath": "E:\\Projekty\\C#\\VotingApp\\VotingApp\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "E:\\Programy\\Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Mateusz\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "E:\\Projekty\\C#\\VotingApp\\VotingApp.Infrastructure\\VotingApp.Infrastructure.csproj": {
+                "projectPath": "E:\\Projekty\\C#\\VotingApp\\VotingApp.Infrastructure\\VotingApp.Infrastructure.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[7.0.4, )"
+            },
+            "Microsoft.Extensions.DependencyInjection": {
+              "target": "Package",
+              "version": "[7.0.0, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",

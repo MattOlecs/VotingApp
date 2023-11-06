@@ -1,3 +1,5 @@
+using VotingApp.Infrastructure;
+
 var builder = WebApplication.CreateBuilder(args);
 
 
@@ -5,6 +7,9 @@ builder.Services.AddControllers();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+//CQRS
+builder.Services.RegisterCQRS();
 
 var app = builder.Build();
 

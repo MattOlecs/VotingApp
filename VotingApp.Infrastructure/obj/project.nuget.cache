@@ -1,8 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "K1WmonDkdie1pp0xgWHtTKjPqF2+fbCBxIlldftdgWsJMI6NwD4gh9lt8x3VrtmqLDNVCal+SZEbJ3vr456jmQ==",
+  "dgSpecHash": "1cSSpBDewT3NNPjvozJOx3sqGasoFe2SVmjs6rwDuG3c5r66NFg48jeaU/GORuaL88w4VjCV1UKiP1CBBTJfCA==",
   "success": true,
   "projectFilePath": "E:\\Projekty\\C#\\VotingApp\\VotingApp.Infrastructure\\VotingApp.Infrastructure.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Mateusz\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\7.0.0\\microsoft.extensions.dependencyinjection.7.0.0.nupkg.sha512",
+    "C:\\Users\\Mateusz\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\7.0.0\\microsoft.extensions.dependencyinjection.abstractions.7.0.0.nupkg.sha512"
+  ],
   "logs": []
 }
