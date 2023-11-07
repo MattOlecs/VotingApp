@@ -1,55 +1,40 @@
-﻿using System.Collections.Concurrent;
-using VotingApp.Classes;
-using VotingApp.Infrastructure.Exceptions;
+﻿using VotingApp.Classes;
 using VotingApp.Records;
 using VotingApp.Services.Interfaces;
 
 namespace VotingApp.Services;
 
-internal class VotesService : IVotesService
+public class VotesService : IVotesService
 {
-    private readonly ConcurrentDictionary<Guid, Voting> _votes = new();
-
-    public Guid AddVoting()
+    private readonly Voting _voting = new();
+    
+    public Guid AddVoter(Voter voter)
     {
-        var guid = Guid.NewGuid();
-        _votes.TryAdd(guid, new Voting());
-        return guid;
+        return _voting.AddVoter(voter);
     }
 
-    public Guid AddVoter(Guid votingId, Voter voter)
+    public Guid AddCandidate(Candidate candidate)
     {
-        var voting = GetVoting(votingId);
-        return voting.AddVoter(voter);
+        return _voting.AddCandidate(candidate);
     }
 
-    public Guid AddCandidate(Guid votingId, Candidate candidate)
+    public void Vote(Guid voterId, Guid candidateId)
     {
-        var voting = GetVoting(votingId);
-        return voting.AddCandidate(candidate);
+        _voting.Vote(voterId, candidateId);
     }
 
-    public void Vote(Guid votingId, Guid voterId, Guid candidateId)
+    public Dictionary<Guid, Voter> GetVoters()
     {
-        var voting = GetVoting(votingId);
-        voting.Vote(voterId, candidateId);
+        return _voting.GetVoters();
+    }
+
+    public Dictionary<Guid, Candidate> GetCandidates()
+    {
+        return _voting.GetCandidates();
     }
 
     public VotingBaseInfo GetVotingInfo(Guid votingId)
     {
-        var voting = GetVoting(votingId);
-        return new VotingBaseInfo(votingId, voting.GetVoters(), voting.GetCandidates());
+        return new VotingBaseInfo(votingId, _voting.GetVoters(), _voting.GetCandidates());
     }
-
-    private Voting GetVoting(Guid id)
-    {
-        _votes.TryGetValue(id, out Voting? voting);
-
-        if (voting is null)
-        {
-            throw new NotFoundException("Voting not found");
-        }
-
-        return voting;
-    }    
 }

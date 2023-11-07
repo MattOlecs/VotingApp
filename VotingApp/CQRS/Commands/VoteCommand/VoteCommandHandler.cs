@@ -14,7 +14,7 @@ public class VoteCommandHandler : ICommandHandler<VoteCommand>
     
     public Task Execute(VoteCommand command)
     {
-        _votesService.Vote(command.VotingId, command.VoterId, command.CandidateId);
+        _votesService.Vote(command.VoterId, command.CandidateId);
         return Task.CompletedTask;
     }
 }

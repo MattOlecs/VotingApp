@@ -21,7 +21,7 @@ public class AddCandidateCommandHandler : ICommandHandler<AddCandidateCommand, G
     
     public async Task<Guid> Execute(AddCandidateCommand command)
     {
-        var candidateId = _votesService.AddCandidate(command.VotingId, new Candidate(command.CandidateName));
+        var candidateId = _votesService.AddCandidate(new Candidate(command.CandidateName));
         await _communicationService.SendMessageToAllAsync(RefreshMessage.RefreshAll);
         return candidateId;
     }

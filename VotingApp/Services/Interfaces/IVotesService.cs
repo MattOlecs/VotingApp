@@ -5,9 +5,10 @@ namespace VotingApp.Services.Interfaces;
 
 public interface IVotesService
 {
-    Guid AddVoting();
-    Guid AddVoter(Guid votingId, Voter voter);
-    Guid AddCandidate(Guid votingId, Candidate candidate);
-    void Vote(Guid votingId, Guid voterId, Guid candidateId);
+    Guid AddVoter(Voter voter);
+    Guid AddCandidate(Candidate candidate);
+    void Vote(Guid voterId, Guid candidateId);
+    Dictionary<Guid, Voter> GetVoters();
+    Dictionary<Guid, Candidate> GetCandidates();
     VotingBaseInfo GetVotingInfo(Guid votingId);
 }

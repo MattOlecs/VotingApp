@@ -14,7 +14,7 @@ public class AddVotingCommandHandler : ICommandHandler<AddVotingCommand, Guid>
     
     public Task<Guid> Execute(AddVotingCommand command)
     {
-        var newVotingGuid = _votesService.AddVoting();
+        var newVotingGuid = Guid.NewGuid();
         return Task.FromResult(newVotingGuid);
     }
 }
