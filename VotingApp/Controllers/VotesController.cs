@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using VotingApp.Classes;
 using VotingApp.CQRS.Commands.AddVoteCommand;
+using VotingApp.CQRS.Commands.VoteCommand;
 using VotingApp.CQRS.Queries.GetVotingInfoQuery;
+using VotingApp.DTOs;
 using VotingApp.Infrastructure.CQRS.Interfaces;
 
 namespace VotingApp.Controllers;
@@ -16,12 +18,13 @@ public class VotesController : AbstractController
         _commandDispatcher = commandDispatcher;
         _queryDispatcher = queryDispatcher;
     }
-    
-    [HttpPost("voting")]
-    public async Task<Guid> AddNewVoting()
+
+    [HttpPost("voting/vote")]
+    public async Task Vote([FromBody] VoteDto voteDto)
     {
-        return await _commandDispatcher.Dispatch<AddVotingCommand, Guid>(new AddVotingCommand());
+        await _commandDispatcher.Dispatch(new VoteCommand(voteDto.VoterId, voteDto.CandidateId));
     }
+    
 
     [HttpGet("voting/{identifier}")]
     public async Task<VotingBaseInfo> GetVotingInfo(Guid identifier)

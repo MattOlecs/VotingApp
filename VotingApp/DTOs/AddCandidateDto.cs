@@ -1,3 +1,3 @@
 ﻿namespace VotingApp.DTOs;
 
-public record AddCandidateDto(Guid VotingId, string CandidateName);
+public record AddCandidateDto(string Name);

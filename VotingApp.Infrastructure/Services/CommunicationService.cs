@@ -1,5 +1,6 @@
 ﻿using System.Net.WebSockets;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using VotingApp.Infrastructure.Managers;
 
 namespace VotingApp.Infrastructure.Services;
@@ -16,7 +17,11 @@ internal class CommunicationService : ICommunicationService
     public async Task SendMessageToAllAsync(object message)
     {
         var sockets = _webSocketManager.GetAllSockets();
-        var serializedMessage = JsonSerializer.SerializeToUtf8Bytes(message);
+        var options = new JsonSerializerOptions
+        {
+            Converters = { new JsonStringEnumConverter() }
+        };
+        var serializedMessage = JsonSerializer.SerializeToUtf8Bytes(message, options);
         
         foreach (var socket in sockets)
         {

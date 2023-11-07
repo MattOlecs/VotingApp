@@ -15,5 +15,5 @@ internal class WebSocketManager : IWebSocketManager
         return connectionId;
     }
 
-    public List<WebSocket> GetAllSockets() => _sockets.Values.ToList();
+    public List<WebSocket> GetAllSockets() => _sockets.Values.Where(x => x.State == WebSocketState.Open).ToList();
 }

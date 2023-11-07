@@ -2,4 +2,4 @@
 
 namespace VotingApp.CQRS.Commands.AddCandidateCommand;
 
-public record AddCandidateCommand(Guid VotingId, string CandidateName) : ICommand<Guid>;
+public record AddCandidateCommand(string CandidateName) : ICommand<Guid>;

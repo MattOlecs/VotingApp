@@ -1,4 +1,5 @@
-﻿using VotingApp.Classes;
+﻿using System.Text.Json.Serialization;
+using VotingApp.Classes;
 using VotingApp.CQRS.Commands.AddCandidateCommand;
 using VotingApp.CQRS.Commands.AddVoteCommand;
 using VotingApp.CQRS.Commands.AddVoterCommand;

@@ -26,6 +26,11 @@ public class Voting
     {
         var voter = GetVoter(voterId);
         var candidate = GetCandidate(candidateId);
+
+        if (voter.HasVoted)
+        {
+            throw new Exception($"$Voter: {voter.Name} has already voted");
+        }
         
         candidate.AddVote();
         voter.MarkAsVoted();
