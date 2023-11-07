@@ -1,7 +1,5 @@
-
-using System.Net;
-using System.Net.WebSockets;
 using VotingApp.Extensions;
+using VotingApp.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +10,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.RegisterServices();
+builder.Services.RegisterWebSocketServices();
 
 var app = builder.Build();
 
@@ -28,18 +27,6 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.UseWebSockets();
-
-app.Map("/ws", async context =>
-{
-    if (context.WebSockets.IsWebSocketRequest)
-    {
-        WebSocket webSocket = await context.WebSockets.AcceptWebSocketAsync();
-        Console.WriteLine("WebSocket Connected");
-    }
-    else
-    {
-        context.Response.StatusCode = (int)HttpStatusCode.BadRequest;
-    }
-});
+app.AddVotingAppWebSockets();
 
 app.Run();

@@ -14,7 +14,7 @@ public class VotersController : AbstractController
         _commandDispatcher = commandDispatcher;
     }
     
-    [HttpPost()]
+    [HttpPost("candidate")]
     public async Task<Guid> AddVoter([FromBody] AddVoterDto addVoterDto)
     {
         return await _commandDispatcher.Dispatch<AddVoterCommand, Guid>(
