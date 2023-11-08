@@ -1,31 +1,28 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using VotingApp.CQRS.Commands.AddCandidateCommand;
+using VotingApp.CQRS.Queries.GetCandidatesQuery;
 using VotingApp.DTOs;
 using VotingApp.Infrastructure.CQRS.Interfaces;
-using VotingApp.Records;
-using VotingApp.Services.Interfaces;
 
 namespace VotingApp.Controllers;
 
 public class CandidatesController : AbstractController
 {
     private readonly ICommandDispatcher _commandDispatcher;
-    private readonly IVotesService _votesService;
+    private readonly IQueryDispatcher _queryDispatcher;
 
-    public CandidatesController(ICommandDispatcher commandDispatcher, IVotesService votesService)
+    public CandidatesController(
+        ICommandDispatcher commandDispatcher,
+        IQueryDispatcher queryDispatcher)
     {
         _commandDispatcher = commandDispatcher;
-        _votesService = votesService;
+        _queryDispatcher = queryDispatcher;
     }
 
     [HttpGet]
-    public Task<ReadCandidateDto[]> GetCandidates()
+    public async Task<ReadCandidateDto[]> GetCandidates()
     {
-        var candidates = _votesService.GetCandidates()
-            .Select(x => new ReadCandidateDto(x.Key, x.Value.Name, x.Value.Votes))
-            .ToArray();
-        return Task.FromResult(candidates);
+        return await _queryDispatcher.Dispatch<GetCandidatesQuery, ReadCandidateDto[]>(new GetCandidatesQuery());
     }
     
     [HttpPost("candidate")]

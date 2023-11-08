@@ -1,30 +1,28 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using VotingApp.CQRS.Commands.AddVoterCommand;
+using VotingApp.CQRS.Queries.GetVotersQuery;
 using VotingApp.DTOs;
 using VotingApp.Infrastructure.CQRS.Interfaces;
-using VotingApp.Records;
-using VotingApp.Services.Interfaces;
 
 namespace VotingApp.Controllers;
 
 public class VotersController : AbstractController
 {
     private readonly ICommandDispatcher _commandDispatcher;
-    private readonly IVotesService _votesService;
+    private readonly IQueryDispatcher _queryDispatcher;
 
-    public VotersController(ICommandDispatcher commandDispatcher, IVotesService votesService)
+    public VotersController(
+        ICommandDispatcher commandDispatcher, 
+        IQueryDispatcher queryDispatcher)
     {
         _commandDispatcher = commandDispatcher;
-        _votesService = votesService;
+        _queryDispatcher = queryDispatcher;
     }
     
     [HttpGet]
-    public Task<ReadVoterDto[]> GetVoters()
+    public async Task<ReadVoterDto[]> GetVoters()
     {
-        var voters = _votesService.GetVoters()
-            .Select(x => new ReadVoterDto(x.Key, x.Value.Name, x.Value.HasVoted))
-            .ToArray();
-        return Task.FromResult(voters);
+        return await _queryDispatcher.Dispatch<GetVotersQuery, ReadVoterDto[]>(new GetVotersQuery());
     }
     
     [HttpPost("voter")]

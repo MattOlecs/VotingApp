@@ -1,10 +1,8 @@
-﻿using System.Text.Json.Serialization;
-using VotingApp.Classes;
-using VotingApp.CQRS.Commands.AddCandidateCommand;
-using VotingApp.CQRS.Commands.AddVoteCommand;
+﻿using VotingApp.CQRS.Commands.AddCandidateCommand;
 using VotingApp.CQRS.Commands.AddVoterCommand;
 using VotingApp.CQRS.Commands.VoteCommand;
-using VotingApp.CQRS.Queries.GetVotingInfoQuery;
+using VotingApp.CQRS.Queries.GetCandidatesQuery;
+using VotingApp.DTOs;
 using VotingApp.Infrastructure;
 using VotingApp.Infrastructure.CQRS.Interfaces;
 using VotingApp.Services;
@@ -29,7 +27,6 @@ internal static class ServicesExtensions
     private static IServiceCollection RegisterCommandHandlers(this IServiceCollection services)
     {
         return services
-            .AddTransient<ICommandHandler<AddVotingCommand, Guid>, AddVotingCommandHandler>()
             .AddTransient<ICommandHandler<AddVoterCommand, Guid>, AddVoterCommandHandler>()
             .AddTransient<ICommandHandler<AddCandidateCommand, Guid>, AddCandidateCommandHandler>()
             .AddTransient<ICommandHandler<VoteCommand>, VoteCommandHandler>();
@@ -38,6 +35,6 @@ internal static class ServicesExtensions
     private static IServiceCollection RegisterQueryHandlers(this IServiceCollection services)
     {
         return services
-            .AddTransient<IQueryHandler<GetVotingInfoQuery, VotingBaseInfo>, GetVotingInfoQueryHandler>();
+            .AddTransient<IQueryHandler<GetCandidatesQuery, ReadCandidateDto[]>, GetCandidatesQueryHandler>();
     }
 }
