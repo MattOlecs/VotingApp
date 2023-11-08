@@ -6,7 +6,7 @@ namespace VotingApp.Services;
 
 public class VotesService : IVotesService
 {
-    private readonly Voting _voting = new();
+    private Voting _voting = new();
     
     public Guid AddVoter(Voter voter)
     {
@@ -33,8 +33,8 @@ public class VotesService : IVotesService
         return _voting.GetCandidates();
     }
 
-    public VotingBaseInfo GetVotingInfo(Guid votingId)
+    public void ResetVoting()
     {
-        return new VotingBaseInfo(votingId, _voting.GetVoters(), _voting.GetCandidates());
+        _voting = new Voting();
     }
 }

@@ -1,7 +1,9 @@
 ﻿using VotingApp.CQRS.Commands.AddCandidateCommand;
 using VotingApp.CQRS.Commands.AddVoterCommand;
+using VotingApp.CQRS.Commands.ResetVotingCommand;
 using VotingApp.CQRS.Commands.VoteCommand;
 using VotingApp.CQRS.Queries.GetCandidatesQuery;
+using VotingApp.CQRS.Queries.GetVotersQuery;
 using VotingApp.DTOs;
 using VotingApp.Infrastructure;
 using VotingApp.Infrastructure.CQRS.Interfaces;
@@ -29,12 +31,14 @@ internal static class ServicesExtensions
         return services
             .AddTransient<ICommandHandler<AddVoterCommand, Guid>, AddVoterCommandHandler>()
             .AddTransient<ICommandHandler<AddCandidateCommand, Guid>, AddCandidateCommandHandler>()
-            .AddTransient<ICommandHandler<VoteCommand>, VoteCommandHandler>();
+            .AddTransient<ICommandHandler<VoteCommand>, VoteCommandHandler>()
+            .AddTransient<ICommandHandler<ResetVotingCommand>, ResetVotingCommandHandler>();
     }
     
     private static IServiceCollection RegisterQueryHandlers(this IServiceCollection services)
     {
         return services
-            .AddTransient<IQueryHandler<GetCandidatesQuery, ReadCandidateDto[]>, GetCandidatesQueryHandler>();
+            .AddTransient<IQueryHandler<GetCandidatesQuery, ReadCandidateDto[]>, GetCandidatesQueryHandler>()
+            .AddTransient<IQueryHandler<GetVotersQuery, ReadVoterDto[]>, GetVotersQueryHandler>();
     }
 }
