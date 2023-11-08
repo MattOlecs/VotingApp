@@ -1,5 +1,4 @@
 ﻿using FluentAssertions;
-using VotingApp.Classes;
 using VotingApp.Records;
 using VotingApp.Services;
 using VotingApp.Services.Interfaces;
